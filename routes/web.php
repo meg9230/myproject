@@ -11,16 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
-    Route::get('profile/create', 'User\ProfileController@add');
-    Route::get('profile/edit', 'User\ProfileController@edit');
-    Route::post('profile/create', 'User\ProfileController@create');
-    Route::post('profile/edit', 'User\ProfileController@update');
-});
-
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user/profile/', 'User\ProfileController@index');
