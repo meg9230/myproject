@@ -14,3 +14,5 @@
 Route::get('/user/profile/', 'User\ProfileController@index');
 Route::get('/user/reservation/', 'User\ReservationController@index');
 Route::get('/user/reservation/create', 'User\ReservationController@create');
+
+Route::get('/teacher/profile/', 'Teacher\ProfileController@index');
