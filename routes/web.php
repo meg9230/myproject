@@ -16,3 +16,10 @@ Route::get('/user/reservation/', 'User\ReservationController@index');
 Route::get('/user/reservation/create', 'User\ReservationController@create');
 
 Route::get('/teacher/profile/', 'Teacher\ProfileController@index');
+
+// ユーザー用のログイン・新規登録
+Auth::routes();
+
+// 先生用のログイン・新規登録
+Route::get('teacher/register', 'Auth\Teacher\RegisterController@showRegistrationForm');
+Route::get('teacher/login', 'Auth\Teacher\LoginController@showLoginForm');
