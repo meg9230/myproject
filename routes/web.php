@@ -24,3 +24,4 @@ Auth::routes();
 Route::get('teacher/register', 'Auth\Teacher\RegisterController@showRegistrationForm');
 Route::post('teacher/register', 'Auth\Teacher\RegisterController@register');
 Route::get('teacher/login', 'Auth\Teacher\LoginController@showLoginForm');
+Route::post('teacher/login', 'Auth\Teacher\LoginController@login');
