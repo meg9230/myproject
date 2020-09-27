@@ -8,7 +8,7 @@
                 <div class="login-header card-header mx-auto">先生用ログイン画面</div>
 
                 <div class="login-body card-body">
-                    <form method="POST" action="/teacher/login">
+                    <form method="POST" action="{{ route('teacher/login') }}">
                         @csrf
 
                         <div class="form-group row">
