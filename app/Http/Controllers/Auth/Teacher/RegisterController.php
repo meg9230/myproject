@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -28,16 +29,19 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/teacher/profile';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
+    // すでにログイン済みの場合は、このページは表示させずリダイレクトする
+    // ミドルウェアは作成し、Kernel.phpに登録する
     public function __construct()
     {
-        // $this->middleware('guest');
+        $this->middleware('teacherguest');
     }
 
     /**
@@ -74,5 +78,10 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         return view('auth.teacher.register');
+    }
+
+    // 認証方法を変更する
+    protected function guard() {
+        return Auth::guard('teacher');
     }
 }
