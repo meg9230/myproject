@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Teacher;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
@@ -15,10 +15,12 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
+
+     // すでにログイン済みの場合は、リダイレクトする
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/user/profile');
+        if (Auth::guard('teacher')->check()) {
+            return redirect('/teacher/profile');
         }
 
         return $next($request);

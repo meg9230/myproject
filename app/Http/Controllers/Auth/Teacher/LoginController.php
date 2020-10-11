@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth\Teacher;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/user/profile';
+    protected $redirectTo = '/teacher/profile';
 
     /**
      * Create a new controller instance.
@@ -34,6 +36,17 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('teacherguest')->except('logout');
+    }
+
+    // viewを変更する
+    public function showLoginForm()
+    {
+        return view('auth.teacher.login');
+    }
+
+    // 認証方法を変更する
+    protected function guard() {
+        return Auth::guard('teacher');
     }
 }
