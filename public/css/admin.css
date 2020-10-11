@@ -1,0 +1,12 @@
+body {
+  background-color: rgba(233, 247, 240, 0);
+}
+
+.label-width {
+  width: 50px;
+}
+
+.page-container {
+  display: flex;
+}
+
